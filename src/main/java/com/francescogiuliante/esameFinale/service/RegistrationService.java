@@ -12,23 +12,35 @@ import com.francescogiuliante.esameFinale.repository.AccountRepository;
 import com.francescogiuliante.esameFinale.repository.CredentialRepository;
 import com.francescogiuliante.esameFinale.repository.StudentRepository;
 import com.francescogiuliante.esameFinale.repository.TeacherRepository;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
 public class RegistrationService {
 
-    private final AccountRepository accountRepository;
-    private final CredentialRepository credentialRepository;
-    private final StudentRepository studentRepository;
-    private final TeacherRepository teacherRepository;
-    private final PasswordEncoder passwordEncoder;
-    private final StudentRegistrationMapper studentRegistrationMapper;
-    private final TeacherRegistrationMapper teacherRegistrationMapper;
+    @Autowired
+    private AccountRepository accountRepository;
+
+    @Autowired
+    private CredentialRepository credentialRepository;
+
+    @Autowired
+    private StudentRepository studentRepository;
+
+    @Autowired
+    private TeacherRepository teacherRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private StudentRegistrationMapper studentRegistrationMapper;
+
+    @Autowired
+    private TeacherRegistrationMapper teacherRegistrationMapper;
 
     public void registerStudent(StudentRegistrationDTO registrationDTO) {
         log.info("Registering student: {}", registrationDTO.getEmail());

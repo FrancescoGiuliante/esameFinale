@@ -20,6 +20,6 @@ public class Teacher {
     private int yearsOfExperience;
     private java.time.LocalDate hiringDate;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Account account;
 }

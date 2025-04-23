@@ -21,7 +21,7 @@ public class StudentExportService {
     public void writeStudentsToCsv(Writer writer) throws IOException {
         log.info("Starting to write student data to CSV.");
         try (CSVWriter csvWriter = new CSVWriter(writer)) {
-            String[] header = {"ID", "Birth Date", "Birth Place", "Enrollment Year", "Account ID"};
+            String[] header = {"Student ID", "Name", "Surname", "Birth Date", "Birth Place", "Enrollment Year", "Phone"};
             csvWriter.writeNext(header);
 
             List<Student> students = studentRepository.findAll();
@@ -29,10 +29,12 @@ public class StudentExportService {
             for (Student student : students) {
                 String[] data = {
                         String.valueOf(student.getId()),
+                        student.getAccount().getFirstName(),
+                        student.getAccount().getLastName(),
                         student.getBirthDate().toString(),
                         student.getBirthPlace(),
                         String.valueOf(student.getEnrollmentYear()),
-                        String.valueOf(student.getAccount().getId())
+                        student.getAccount().getPhone()
                 };
                 csvWriter.writeNext(data);
             }

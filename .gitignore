@@ -1,4 +1,3 @@
-HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -31,3 +30,20 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Spring Boot Configuration ###
+application*.properties
+application*.yml
+!src/main/resources/*.example
+
+### Logs ###
+*.log
+
+### Package Files ###
+*.jar
+*.war
+*.ear
+
+### OS Specific ###
+.DS_Store
+Thumbs.db

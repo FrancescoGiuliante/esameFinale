@@ -11,6 +11,7 @@ public interface CourseMapper {
 
     @Mapping(source = "name", target = "courseName")
     @Mapping(source = "category", target = "courseCategory")
+    @Mapping(source = "academicYear", target = "academicYear")
     CourseResponseDTO toResponseDTO(Course course);
 
     Course toEntity(CourseDTO courseDTO);

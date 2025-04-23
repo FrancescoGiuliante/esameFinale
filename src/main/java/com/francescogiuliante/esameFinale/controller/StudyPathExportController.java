@@ -30,7 +30,7 @@ public class StudyPathExportController {
         byte[] excelBytes = studyPathExportService.exportStudyPathsToExcel();
 
         return ResponseEntity.ok()
-                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .contentType(MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"study_paths_and_exams.xlsx\"")
                 .body(excelBytes);
     }

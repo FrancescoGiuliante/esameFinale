@@ -9,7 +9,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface EnrollmentMapper {
 
-    @Mapping(source = "student.account.firstName", target = "studentName")
+    @Mapping(target = "studentName", expression = "java(enrollment.getStudent().getAccount().getFirstName() + ' ' + enrollment.getStudent().getAccount().getLastName())")
     @Mapping(source = "course.name", target = "courseName")
     EnrollmentResponseDTO toResponseDTO(Enrollment enrollment);
 

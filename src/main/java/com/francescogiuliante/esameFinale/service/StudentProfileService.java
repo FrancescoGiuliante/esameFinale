@@ -66,37 +66,37 @@ public class StudentProfileService {
         PdfDocument pdfDocument = new PdfDocument(writer);
         Document document = new Document(pdfDocument);
 
-        document.add(new Paragraph("Profilo Studente"));
+        document.add(new Paragraph("Student Profile"));
         document.add(new Paragraph("ID: " + profileDTO.getId()));
-        document.add(new Paragraph("Nome: " + profileDTO.getFirstName()));
-        document.add(new Paragraph("Cognome: " + profileDTO.getLastName()));
-        document.add(new Paragraph("Data di Nascita: " + profileDTO.getBirthDate()));
-        document.add(new Paragraph("Luogo di Nascita: " + profileDTO.getBirthPlace()));
-        document.add(new Paragraph("Anno di Iscrizione: " + profileDTO.getEnrollmentYear()));
+        document.add(new Paragraph("First Name: " + profileDTO.getFirstName()));
+        document.add(new Paragraph("Last Name: " + profileDTO.getLastName()));
+        document.add(new Paragraph("Birth Date: " + profileDTO.getBirthDate()));
+        document.add(new Paragraph("Birth Place: " + profileDTO.getBirthPlace()));
+        document.add(new Paragraph("Enrollment Year: " + profileDTO.getEnrollmentYear()));
 
         if (!profileDTO.getEnrollments().isEmpty()) {
-            document.add(new Paragraph("\nIscrizioni:"));
+            document.add(new Paragraph("\nEnrollments:"));
             for (EnrollmentResponseDTO enrollment : profileDTO.getEnrollments()) {
-                document.add(new Paragraph("- Corso: " + enrollment.getCourseName() +
-                        ", Data Iscrizione: " + enrollment.getEnrollmentDate() +
-                        ", Stato: " + enrollment.getEnrollmentStatus()));
+                document.add(new Paragraph("- Course: " + enrollment.getCourseName() +
+                        ", Enrollment Date: " + enrollment.getEnrollmentDate() +
+                        ", Status: " + enrollment.getEnrollmentStatus()));
             }
         }
 
         if (!profileDTO.getFinalEvaluations().isEmpty()) {
-            document.add(new Paragraph("\nValutazioni Finali:"));
+            document.add(new Paragraph("\nFinal Evaluations:"));
             for (FinalEvaluationResponseDTO evaluation : profileDTO.getFinalEvaluations()) {
-                document.add(new Paragraph("- Corso: " + evaluation.getCourseName() +
-                        ", Voto Finale: " + evaluation.getFinalGrade() +
+                document.add(new Paragraph("- Course: " + evaluation.getCourseName() +
+                        ", Final Grade: " + evaluation.getFinalGrade() +
                         ", Feedback: " + evaluation.getFinalFeedback()));
             }
         }
 
         if (!profileDTO.getStudentExams().isEmpty()) {
-            document.add(new Paragraph("\nEsami Sostenuti:"));
+            document.add(new Paragraph("\nExams Taken:"));
             for (StudentExamResponseDTO exam : profileDTO.getStudentExams()) {
-                document.add(new Paragraph("- Esame: " + exam.getExamName() +
-                        ", Voto: " + exam.getGrade()));
+                document.add(new Paragraph("- Exam: " + exam.getExamName() +
+                        ", Grade: " + exam.getGrade()));
             }
         }
 

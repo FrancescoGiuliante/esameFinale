@@ -8,6 +8,7 @@ import com.francescogiuliante.esameFinale.model.Credential;
 import com.francescogiuliante.esameFinale.repository.AccountRepository;
 import com.francescogiuliante.esameFinale.repository.CredentialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -25,6 +26,9 @@ public class CredentialService {
 
     @Autowired
     private AccountRepository accountRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public List<CredentialResponseDTO> getAllCredentials() {
         List<Credential> credentials = credentialRepository.findAll();
@@ -49,6 +53,7 @@ public class CredentialService {
         Optional<Account> accountOptional = accountRepository.findById(credentialDTO.getAccountId());
         if (accountOptional.isPresent()) {
             credential.setAccount(accountOptional.get());
+            credential.setPassword(passwordEncoder.encode(credentialDTO.getPassword()));
             Credential savedCredential = credentialRepository.save(credential);
             return credentialMapper.toResponseDTO(savedCredential);
         }
@@ -65,7 +70,9 @@ public class CredentialService {
                 updatedCredential.setId(id);
                 updatedCredential.setAccount(accountOptional.get());
                 existingCredential.setEmail(updatedCredential.getEmail());
-                existingCredential.setPassword(updatedCredential.getPassword());
+                if (credentialDTO.getPassword() != null && !credentialDTO.getPassword().isEmpty()) {
+                    existingCredential.setPassword(passwordEncoder.encode(credentialDTO.getPassword()));
+                }
                 Credential savedCredential = credentialRepository.save(existingCredential);
                 return Optional.of(credentialMapper.toResponseDTO(savedCredential));
             }

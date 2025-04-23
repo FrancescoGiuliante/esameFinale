@@ -20,6 +20,6 @@ public class Student {
     private String birthPlace;
     private int enrollmentYear;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Account account;
 }

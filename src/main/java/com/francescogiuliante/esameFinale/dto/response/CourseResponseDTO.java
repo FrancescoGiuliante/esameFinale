@@ -13,4 +13,5 @@ public class CourseResponseDTO {
     private String courseCategory;
     private int duration;
     private String description;
+    private String academicYear;
 }

@@ -1,5 +1,6 @@
 package com.francescogiuliante.esameFinale.dto.request;
 
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,5 +14,7 @@ public class CourseDTO {
     private String description;
     private int duration;
     private String category;
+
+    @Pattern(regexp = "^\\d{4}-\\d{4}$", message = "Academic year must be in the format YYYY-YYYY")
     private String academicYear;
 }

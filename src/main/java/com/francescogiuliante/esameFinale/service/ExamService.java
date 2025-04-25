@@ -43,11 +43,11 @@ public class ExamService {
         }
     }
 
-    public ExamResponseDTO createExam(ExamDTO examDTO) {
+    public Long createExam(ExamDTO examDTO) {
         log.info("Creating a new exam: {}", examDTO);
         Exam exam = examMapper.toEntity(examDTO);
         Exam savedExam = examRepository.save(exam);
-        return examMapper.toResponseDTO(savedExam);
+        return savedExam.getId();
     }
 
     public Optional<ExamResponseDTO> updateExam(Long id, ExamDTO examDTO) {

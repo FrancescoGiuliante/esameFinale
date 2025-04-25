@@ -46,10 +46,10 @@ public class ExamController {
     @Operation(summary = "Create a new exam")
     @ApiResponse(responseCode = "201", description = "Exam created")
     @ApiResponse(responseCode = "400", description = "Invalid input")
-    public ResponseEntity<ExamResponseDTO> createExam(@RequestBody ExamDTO examDTO) {
+    public ResponseEntity<Long> createExam(@RequestBody ExamDTO examDTO) {
         log.info("Received POST request for /api/exams with body: {}", examDTO);
-        ExamResponseDTO createdExam = examService.createExam(examDTO);
-        return new ResponseEntity<>(createdExam, HttpStatus.CREATED);
+        Long createdExamId = examService.createExam(examDTO);
+        return new ResponseEntity<>(createdExamId, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")

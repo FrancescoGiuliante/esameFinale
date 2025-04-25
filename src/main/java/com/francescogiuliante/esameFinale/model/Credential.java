@@ -16,9 +16,17 @@ public class Credential {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private String email;
+
     private String password;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Account account;
+
+    public Credential(String email, String password, Account account) {
+        this.email = email;
+        this.password = password;
+        this.account = account;
+    }
 }

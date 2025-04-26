@@ -32,8 +32,10 @@ public class AuthController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
     @Autowired
     private RegistrationService registrationService;
+
     @Autowired
     private JwtService jwtService;
 

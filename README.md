@@ -45,12 +45,13 @@ Il sistema permette di gestire **studenti**, **docenti**, **corsi**, **iscrizion
          v
 [ Database PostgreSQL ]
 
-- Accesso protetto tramite JWT
+- Accesso protetto tramite **JWT**
 - Struttura **MVC** (Model - View - Controller)
 - **DTOs** per input/output sicuro
 - **Mapper** per conversione DTO ↔️ Entity
 - **Factory** per creazione oggetti di test (usate nel `DataLoader`)
 - **DataLoader** per caricamento dati iniziali
+- **Logging con @Slf4j** per tracciare gli eventi significativi del sistema
 
 ---
 
@@ -65,6 +66,8 @@ Il sistema permette di gestire **studenti**, **docenti**, **corsi**, **iscrizion
   - Password salvate cifrate in database.
 - **Eccezioni personalizzate**:
   - Gestione errori come registrazione con email già esistente.
+- **Logging degli errori**:
+  - Errori e situazione anomale loggate per facilitare il debug e il monitoraggio del sistema.
 
 ---
 

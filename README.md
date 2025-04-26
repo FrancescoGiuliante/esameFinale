@@ -25,26 +25,14 @@ Il sistema permette di gestire **studenti**, **docenti**, **corsi**, **iscrizion
 ---
 
 ## Architettura
-[ Browser / Postman ]
-         |
-         v
-[ API Gateway - Spring Boot Controller ]
-         |
-         v
-[ Security Filter - JwtFilter ]
- (Verifica token JWT)
-         |
-         v
-[ Service Layer ]
- (Business logic)
-         |
-         v
-[ Repository Layer ]
- (Spring Data JPA)
-         |
-         v
-[ Database PostgreSQL ]
-
+- Dettagli del **flusso**:
+    1. **Browser / Postman**: L'utente o l'applicazione invia richieste API tramite un browser o Postman.
+    2. **API Gateway - Spring Boot Controller**: Il controller gestisce la richiesta e la inoltra al filtro di sicurezza.
+    3. **Security Filter - JwtFilter**: Verifica la validità del token JWT fornito nella richiesta.
+    4. **Service Layer**: Qui viene gestita la logica di business, che esegue le operazioni necessarie sui dati.
+    5. **Repository Layer**: Le operazioni sui dati vengono eseguite tramite Spring Data JPA.
+    6. **Database PostgreSQL**: Infine, i dati sono memorizzati e gestiti nel database PostgreSQL.
+    
 - Accesso protetto tramite **JWT**
 - Struttura **MVC** (Model - View - Controller)
 - **DTOs** per input/output sicuro
